@@ -31,7 +31,7 @@ function WeekPage() {
             const { data, error } = await supabase
                 .from("daily_workouts")
                 .select("*")
-                .eq("category", user?.category)
+                .eq("category", user?.goal)
                 .eq("week_number", weekNum)
                 .order("day_number", { ascending: true });
 
@@ -40,6 +40,8 @@ function WeekPage() {
         },
         enabled: !!user && !!weekNum,
     });
+
+    console.log(user);
 
     // Fetch daily meals for this week
     const { data: dailyMeals, isLoading: mealsLoading } = useQuery({
@@ -270,11 +272,21 @@ function WeekPage() {
                                     <div className="aspect-w-16 aspect-h-9 mb-4">
                                         <iframe
                                             className="w-full h-[400px] rounded-lg"
-                                            src={activeWorkout.video_url}
+                                            src={`https://www.youtube.com/embed/${
+                                                activeWorkout.video_url.split(
+                                                    "v="
+                                                )[1]
+                                            }`}
                                             title={`Hafta ${weekNum}, Kun ${activeDay} - ${activeWorkout.name} Mashg'uloti`}
                                             frameBorder="0"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowFullScreen
+                                            onError={(e) =>
+                                                console.error(
+                                                    "Error loading YouTube video:",
+                                                    e
+                                                )
+                                            }
                                         ></iframe>
                                     </div>
                                 )}

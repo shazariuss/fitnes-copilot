@@ -13,6 +13,7 @@ import AdminPage from "./pages/AdminPage"; // Add this import
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedAdminRoute from "./components/ProtectedAdminRoute";
 
 function App() {
     const { user, loading } = useAuth();
@@ -67,8 +68,15 @@ function App() {
                     element={<ProgressPhotosPage />}
                 />
                 <Route path="measurements" element={<MeasurementsPage />} />
-                <Route path="admin" element={<AdminPage />} />{" "}
                 {/* Add this route */}
+                <Route
+                    path="admin"
+                    element={
+                        <ProtectedAdminRoute>
+                            <AdminPage />
+                        </ProtectedAdminRoute>
+                    }
+                />
             </Route>
 
             <Route path="*" element={<NotFound />} />

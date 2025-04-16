@@ -190,26 +190,26 @@ function MeasurementsPage() {
         <div className="max-w-4xl mx-auto">
             <div className="mb-6 flex justify-between items-center">
                 <h1 className="text-3xl font-bold text-gray-900">
-                    Body Measurements
+                    Tana o'lchovlari o'zgarishi
                 </h1>
                 <button
                     onClick={() => navigate("/dashboard")}
                     className="text-primary-600 hover:text-primary-800 font-medium"
                 >
-                    ← Back to Dashboard
+                    ← Dashboard
                 </button>
             </div>
 
             <div className="bg-white shadow rounded-lg p-6 mb-8">
                 <h2 className="text-xl font-semibold text-gray-800 mb-4">
-                    Add New Measurements
+                    Yangi o'zgarish qo'shish
                 </h2>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">
-                                Weight (kg)
+                                Vazn (kg)
                             </label>
                             <input
                                 type="number"
@@ -223,7 +223,7 @@ function MeasurementsPage() {
 
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">
-                                Chest (cm)
+                                ko'krak (cm)
                             </label>
                             <input
                                 type="number"
@@ -237,7 +237,7 @@ function MeasurementsPage() {
 
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">
-                                Waist (cm)
+                                Bel (cm)
                             </label>
                             <input
                                 type="number"
@@ -251,7 +251,7 @@ function MeasurementsPage() {
 
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">
-                                Hips (cm)
+                                Dumba (cm)
                             </label>
                             <input
                                 type="number"
@@ -265,7 +265,7 @@ function MeasurementsPage() {
 
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">
-                                Arms (cm)
+                                Qo'llar (cm)
                             </label>
                             <input
                                 type="number"
@@ -279,7 +279,7 @@ function MeasurementsPage() {
 
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">
-                                Thighs (cm)
+                                Sonlar (cm)
                             </label>
                             <input
                                 type="number"
@@ -331,7 +331,7 @@ function MeasurementsPage() {
 
                     <div className="bg-white shadow rounded-lg p-6">
                         <h2 className="text-xl font-semibold text-gray-800 mb-4">
-                            Measurement History
+                            O'zgarishlar tarixi
                         </h2>
 
                         <div className="overflow-x-auto">
@@ -339,28 +339,28 @@ function MeasurementsPage() {
                                 <thead className="bg-gray-50">
                                     <tr>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Date
+                                            Sana
                                         </th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Weight (kg)
+                                            Vazn (kg)
                                         </th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Chest (cm)
+                                            Ko'krak (cm)
                                         </th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Waist (cm)
+                                            Bel (cm)
                                         </th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Hips (cm)
+                                            Dumba (cm)
                                         </th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Arms (cm)
+                                            Qo'llar (cm)
                                         </th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Thighs (cm)
+                                            Son (cm)
                                         </th>
                                         <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Actions
+                                            Harakatlar
                                         </th>
                                     </tr>
                                 </thead>
