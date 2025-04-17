@@ -46,7 +46,7 @@ function Navbar() {
                             ) : (
                                 ""
                             )}
-                        </div>
+                        </div>{" "}
                     </div>
 
                     <div className="hidden sm:ml-6 sm:flex sm:items-center">

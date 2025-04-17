@@ -31,7 +31,7 @@ function WeekPage() {
             const { data, error } = await supabase
                 .from("daily_workouts")
                 .select("*")
-                .eq("category", user?.goal)
+                .eq("category", user?.category)
                 .eq("week_number", weekNum)
                 .order("day_number", { ascending: true });
 

@@ -166,7 +166,7 @@ function WorkoutLogPage() {
                 <h1 className="text-3xl font-bold text-gray-900">
                     {isEditing
                         ? `Edit Workout Log - Week ${weekNum}`
-                        : "Workout Logs"}
+                        : "Mashg'ulotlar tarixi"}
                 </h1>
                 <button
                     onClick={() =>
@@ -174,14 +174,16 @@ function WorkoutLogPage() {
                     }
                     className="text-primary-600 hover:text-primary-800 font-medium"
                 >
-                    ← Back to {isEditing ? "Logs" : "Dashboard"}
+                    ← {isEditing ? "Logs" : "Dashboard"}
                 </button>
             </div>
 
             {/* Form to add/edit workout log */}
             <div className="bg-white shadow rounded-lg p-6 mb-8">
                 <h2 className="text-xl font-semibold text-gray-800 mb-4">
-                    {isEditing ? "Update Workout Log" : "Add New Workout Log"}
+                    {isEditing
+                        ? "Update Workout Log"
+                        : "Yangi mashg'ulot qo'shish"}
                 </h2>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -191,7 +193,7 @@ function WorkoutLogPage() {
                                 htmlFor="weekNum"
                                 className="block text-sm font-medium text-gray-700 mb-1"
                             >
-                                Week Number
+                                Hafta raqami
                             </label>
                             <select
                                 id="weekNum"
@@ -201,10 +203,10 @@ function WorkoutLogPage() {
                                 }
                                 className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
                             >
-                                <option value="">-- Select Week --</option>
+                                <option value="">-- Haftani tanlash --</option>
                                 {[...Array(12)].map((_, i) => (
                                     <option key={i + 1} value={i + 1}>
-                                        Week {i + 1}
+                                        Hafta {i + 1}
                                     </option>
                                 ))}
                             </select>
@@ -213,7 +215,7 @@ function WorkoutLogPage() {
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                            How long did you workout? (minutes)
+                            Qancha vaqt mashq qildingiz? (minutlar)
                         </label>
                         <input
                             type="number"
@@ -229,10 +231,10 @@ function WorkoutLogPage() {
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                            How intense was your workout?
+                            Mashqingiz qanday darajda o'tdi?
                         </label>
                         <div className="flex space-x-4">
-                            {["light", "medium", "intense"].map((level) => (
+                            {["yengil", "o'rta", "shiddatli"].map((level) => (
                                 <label
                                     key={level}
                                     className="flex items-center"
@@ -255,7 +257,7 @@ function WorkoutLogPage() {
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                            Rate this workout (1-5)
+                            Mashg'ulotni baholang (1-5)
                         </label>
                         <div className="flex space-x-2">
                             {[1, 2, 3, 4, 5].map((num) => (
@@ -265,7 +267,7 @@ function WorkoutLogPage() {
                                     onClick={() => setRating(num)}
                                     className={`h-8 w-8 rounded-full flex items-center justify-center focus:outline-none ${
                                         rating >= num
-                                            ? "bg-primary-500 text-white"
+                                            ? "bg-sky-500 text-white"
                                             : "bg-gray-200 text-gray-600"
                                     }`}
                                 >
@@ -277,14 +279,14 @@ function WorkoutLogPage() {
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                            Notes
+                            Eslatmalar
                         </label>
                         <textarea
                             value={notes}
                             onChange={(e) => setNotes(e.target.value)}
                             rows={4}
                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                            placeholder="How did you feel? Any modifications you made?"
+                            placeholder="O'zingizni qanday his qildingiz? "
                         ></textarea>
                     </div>
 
@@ -292,7 +294,7 @@ function WorkoutLogPage() {
                         <button
                             type="submit"
                             disabled={saveLogMutation.isPending}
-                            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-sky-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                         >
                             {saveLogMutation.isPending
                                 ? "Saving..."
@@ -308,12 +310,12 @@ function WorkoutLogPage() {
             {!isEditing && (
                 <div className="bg-white shadow rounded-lg p-6">
                     <h2 className="text-xl font-semibold text-gray-800 mb-4">
-                        Your Workout History
+                        Sizning mashg'ulotlar tarixingiz.
                     </h2>
 
                     {logs?.length === 0 ? (
                         <p className="text-gray-500 italic">
-                            No workout logs yet. Add your first log above!
+                            Hali ma'lumot yo'q.
                         </p>
                     ) : (
                         <div className="overflow-x-auto">
@@ -321,22 +323,22 @@ function WorkoutLogPage() {
                                 <thead className="bg-gray-50">
                                     <tr>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Week
+                                            Hafta
                                         </th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Date
+                                            Sana
                                         </th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Duration
+                                            Davomiylik
                                         </th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Intensity
+                                            Shiddatlilik
                                         </th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Rating
+                                            Baho
                                         </th>
                                         <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Actions
+                                            Harakatlar
                                         </th>
                                     </tr>
                                 </thead>
@@ -344,7 +346,7 @@ function WorkoutLogPage() {
                                     {logs?.map((log) => (
                                         <tr key={log.id}>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                Week {log.week}
+                                                Hafta {log.week}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                 {new Date(

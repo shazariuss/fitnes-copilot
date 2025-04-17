@@ -133,19 +133,19 @@ function ProgressPhotosPage() {
         <div className="max-w-4xl mx-auto">
             <div className="mb-6 flex justify-between items-center">
                 <h1 className="text-3xl font-bold text-gray-900">
-                    Progress Photos
+                    Progres rasmlar
                 </h1>
                 <button
                     onClick={() => navigate("/dashboard")}
                     className="text-primary-600 hover:text-primary-800 font-medium"
                 >
-                    ← Back to Dashboard
+                    ← Dashboard
                 </button>
             </div>
 
             <div className="bg-white shadow rounded-lg p-6 mb-8">
                 <h2 className="text-xl font-semibold text-gray-800 mb-4">
-                    Upload New Photo
+                    Yangi rasm yuklash
                 </h2>
 
                 {uploadError && (
@@ -157,22 +157,22 @@ function ProgressPhotosPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                            Select Month
+                            Oyni tanlang
                         </label>
                         <select
                             value={selectedMonth}
                             onChange={(e) => setSelectedMonth(e.target.value)}
                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
                         >
-                            <option value="1">Month 1</option>
-                            <option value="2">Month 2</option>
-                            <option value="3">Month 3</option>
+                            <option value="1">Oy 1</option>
+                            <option value="2">Oy 2</option>
+                            <option value="3">Oy 3</option>
                         </select>
                     </div>
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                            Choose Photo
+                            Rasm tanlang
                         </label>
                         <input
                             type="file"
@@ -192,12 +192,12 @@ function ProgressPhotosPage() {
 
             <div className="bg-white shadow rounded-lg p-6">
                 <h2 className="text-xl font-semibold text-gray-800 mb-4">
-                    Your Progress Photos
+                    Sizning rasmlaringiz
                 </h2>
 
                 {Object.keys(photosByMonth).length === 0 ? (
                     <p className="text-gray-500 italic">
-                        No progress photos uploaded yet.
+                        Hali hech qanday rasm yo'q.
                     </p>
                 ) : (
                     <div className="space-y-8">
