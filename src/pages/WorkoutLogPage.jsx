@@ -13,10 +13,17 @@ function WorkoutLogPage() {
         weekNumber ? parseInt(weekNumber) : null
     );
     const [notes, setNotes] = useState("");
-    const [intensity, setIntensity] = useState("medium");
+    const [intensity, setIntensity] = useState("MEDIUM"); // Default value matching database constraint
     const [duration, setDuration] = useState(30);
     const [rating, setRating] = useState(3);
     const [isEditing, setIsEditing] = useState(!!weekNumber);
+
+    // Define the intensity options that match the database constraints
+    const intensityOptions = [
+        { value: "LOW", label: "yengil" },
+        { value: "MEDIUM", label: "o'rta" },
+        { value: "HIGH", label: "shiddatli" },
+    ];
 
     // Fetch all workout logs
     const { data: logs, isLoading: logsLoading } = useQuery({
@@ -55,7 +62,7 @@ function WorkoutLogPage() {
     useEffect(() => {
         if (currentLog) {
             setNotes(currentLog.notes || "");
-            setIntensity(currentLog.intensity || "medium");
+            setIntensity(currentLog.intensity || "MEDIUM");
             setDuration(currentLog.duration || 30);
             setRating(currentLog.rating || 3);
         }
@@ -68,7 +75,7 @@ function WorkoutLogPage() {
                 user_id: user.id,
                 week: weekNum,
                 notes,
-                intensity,
+                intensity, // We're now using the correct values that match database constraints
                 duration,
                 rating,
                 logged_at: new Date().toISOString(),
@@ -103,7 +110,7 @@ function WorkoutLogPage() {
             // Reset form if not editing
             if (!isEditing) {
                 setNotes("");
-                setIntensity("medium");
+                setIntensity("MEDIUM");
                 setDuration(30);
                 setRating(3);
                 setWeekNum(null);
@@ -234,21 +241,23 @@ function WorkoutLogPage() {
                             Mashqingiz qanday darajda o'tdi?
                         </label>
                         <div className="flex space-x-4">
-                            {["yengil", "o'rta", "shiddatli"].map((level) => (
+                            {intensityOptions.map((option) => (
                                 <label
-                                    key={level}
+                                    key={option.value}
                                     className="flex items-center"
                                 >
                                     <input
                                         type="radio"
                                         name="intensity"
-                                        value={level}
-                                        checked={intensity === level}
-                                        onChange={() => setIntensity(level)}
+                                        value={option.value}
+                                        checked={intensity === option.value}
+                                        onChange={() =>
+                                            setIntensity(option.value)
+                                        }
                                         className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300"
                                     />
                                     <span className="ml-2 text-sm text-gray-700 capitalize">
-                                        {level}
+                                        {option.label}
                                     </span>
                                 </label>
                             ))}
@@ -357,7 +366,11 @@ function WorkoutLogPage() {
                                                 {log.duration} min
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 capitalize">
-                                                {log.intensity}
+                                                {intensityOptions.find(
+                                                    (opt) =>
+                                                        opt.value ===
+                                                        log.intensity
+                                                )?.label || log.intensity}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                 {log.rating}/5

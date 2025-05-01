@@ -52,9 +52,6 @@ function Login() {
                 <h1 className="text-center text-3xl font-bold text-gray-900">
                     Fitness Mentor
                 </h1>
-                <h2 className="mt-6 text-center text-2xl font-bold text-gray-900">
-                    Sign in to your account
-                </h2>
             </div>
 
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -97,7 +94,7 @@ function Login() {
                                 htmlFor="password"
                                 className="block text-sm font-medium text-gray-700"
                             >
-                                Password
+                                Parol
                             </label>
                             <div className="mt-1">
                                 <input
@@ -119,9 +116,9 @@ function Login() {
                             <button
                                 type="submit"
                                 disabled={isLoading}
-                                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50"
+                                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-sky-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50"
                             >
-                                {isLoading ? "Signing in..." : "Sign in"}
+                                {isLoading ? "Login in..." : "Login"}
                             </button>
                         </div>
                     </form>
@@ -140,24 +137,17 @@ function Login() {
 
                         <div className="mt-6">
                             <p className="text-center text-sm text-gray-600">
-                                Don't have an account?{" "}
+                                Akkauntingiz yoqmi{" "}
                                 <Link
                                     to="/register"
                                     className="font-medium text-primary-600 hover:text-primary-500"
                                 >
-                                    Sign up
+                                    Register
                                 </Link>
                             </p>
                         </div>
 
-                        <div className="mt-4 text-center">
-                            <Link
-                                to="/auth-debug"
-                                className="text-xs text-gray-500 hover:underline"
-                            >
-                                Having trouble signing in?
-                            </Link>
-                        </div>
+                        <div className="mt-4 text-center"></div>
                     </div>
                 </div>
             </div>

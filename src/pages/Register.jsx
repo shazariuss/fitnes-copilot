@@ -95,7 +95,7 @@ function Register() {
                     Fitness Mentor
                 </h1>
                 <h2 className="mt-6 text-center text-2xl font-bold text-gray-900">
-                    Create your account
+                    Accaount oching
                 </h2>
             </div>
 
@@ -117,7 +117,7 @@ function Register() {
                                 htmlFor="name"
                                 className="block text-sm font-medium text-gray-700"
                             >
-                                Full Name
+                                F.I.O
                             </label>
                             <div className="mt-1">
                                 <input
@@ -163,7 +163,7 @@ function Register() {
                                 htmlFor="password"
                                 className="block text-sm font-medium text-gray-700"
                             >
-                                Password
+                                Parol
                             </label>
                             <div className="mt-1">
                                 <input
@@ -188,7 +188,7 @@ function Register() {
                                     htmlFor="age"
                                     className="block text-sm font-medium text-gray-700"
                                 >
-                                    Age
+                                    Yosh
                                 </label>
                                 <div className="mt-1">
                                     <input
@@ -212,7 +212,7 @@ function Register() {
                                     htmlFor="gender"
                                     className="block text-sm font-medium text-gray-700"
                                 >
-                                    Gender
+                                    Jins
                                 </label>
                                 <div className="mt-1">
                                     <select
@@ -220,9 +220,8 @@ function Register() {
                                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
                                         {...register("gender")}
                                     >
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                        <option value="Other">Other</option>
+                                        <option value="Male">Erkak</option>
+                                        <option value="Female">Ayol</option>
                                     </select>
                                     {errors.gender && (
                                         <p className="mt-1 text-sm text-red-600">
@@ -239,7 +238,7 @@ function Register() {
                                     htmlFor="weight"
                                     className="block text-sm font-medium text-gray-700"
                                 >
-                                    Weight (kg)
+                                    Vazn (kg)
                                 </label>
                                 <div className="mt-1">
                                     <input
@@ -265,7 +264,7 @@ function Register() {
                                     htmlFor="height"
                                     className="block text-sm font-medium text-gray-700"
                                 >
-                                    Height (cm)
+                                    Bo'y (cm)
                                 </label>
                                 <div className="mt-1">
                                     <input
@@ -292,7 +291,7 @@ function Register() {
                                 htmlFor="goal"
                                 className="block text-sm font-medium text-gray-700"
                             >
-                                Fitness Goal
+                                Maqsad
                             </label>
                             <div className="mt-1">
                                 <select
@@ -303,12 +302,14 @@ function Register() {
                                     })}
                                 >
                                     <option value="Lose Weight">
-                                        Lose Weight
+                                        Vazn tashlash
                                     </option>
                                     <option value="Gain Weight">
-                                        Gain Weight
+                                        vazn olish
                                     </option>
-                                    <option value="Stay Fit">Stay Fit</option>
+                                    <option value="Stay Fit">
+                                        Normada turish
+                                    </option>
                                 </select>
                                 {errors.goal && (
                                     <p className="mt-1 text-sm text-red-600">
@@ -328,7 +329,7 @@ function Register() {
                                 }`}
                             >
                                 <h3 className="text-sm font-medium">
-                                    Your BMI:{" "}
+                                    Sizning BMI:{" "}
                                     <span className="font-bold">
                                         {bmiInfo.bmi}
                                     </span>
@@ -336,13 +337,13 @@ function Register() {
 
                                 {bmiInfo.isGoalMismatched && (
                                     <p className="text-sm mt-1">
-                                        Based on your BMI, we recommend a{" "}
+                                        Biz sizga maslahat beramiz:{" "}
                                         <span className="font-bold">
                                             {bmiInfo.category.replace("_", " ")}{" "}
                                             plan
                                         </span>
-                                        . Your progress will be optimized for
-                                        this goal.
+                                        . Sizning maqsadingiz shu bo'yicha
+                                        optimizatsiya qilinadi
                                     </p>
                                 )}
                             </div>
@@ -352,7 +353,7 @@ function Register() {
                             <button
                                 type="submit"
                                 disabled={isLoading}
-                                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50"
+                                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-sky-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50"
                             >
                                 {isLoading ? "Creating account..." : "Sign up"}
                             </button>
@@ -361,7 +362,7 @@ function Register() {
 
                     <div className="mt-6">
                         <p className="text-center text-sm text-gray-600">
-                            Already have an account?{" "}
+                            Akkauntingiz bormi{" "}
                             <Link
                                 to="/login"
                                 className="font-medium text-primary-600 hover:text-primary-500"
