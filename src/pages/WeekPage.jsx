@@ -94,7 +94,6 @@ function WeekPage() {
 
                 if (error) throw error;
             } else {
-                // Otherwise create new progress entry
                 const { error } = await supabase.from("progress").insert({
                     user_id: user.id,
                     week: weekNum,

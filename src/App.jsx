@@ -19,7 +19,6 @@ function App() {
     const { user, loading } = useAuth();
     const [forceRender, setForceRender] = useState(false);
 
-    // Hard timeout of 8 seconds to ensure we never get stuck in loading
     useEffect(() => {
         const timer = setTimeout(() => {
             if (loading) {
@@ -31,7 +30,6 @@ function App() {
         return () => clearTimeout(timer);
     }, [loading]);
 
-    // If we're still loading and haven't hit the timeout
     if (loading && !forceRender) {
         return (
             <div className="flex flex-col items-center justify-center min-h-screen">

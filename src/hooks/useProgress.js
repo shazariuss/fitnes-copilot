@@ -74,7 +74,6 @@ export function useMarkWeekCompleted(userId, week) {
             }
         },
         onSuccess: () => {
-            // Invalidate relevant queries
             queryClient.invalidateQueries({ queryKey: ["progress", userId] });
             queryClient.invalidateQueries({
                 queryKey: ["weekProgress", userId, week],

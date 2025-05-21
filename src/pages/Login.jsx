@@ -30,7 +30,6 @@ function Login() {
         setServerError("");
 
         try {
-            // Clear any existing sessions first to avoid conflicts
             await supabase.auth.signOut();
 
             // Perform login

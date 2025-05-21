@@ -13,12 +13,11 @@ function WorkoutLogPage() {
         weekNumber ? parseInt(weekNumber) : null
     );
     const [notes, setNotes] = useState("");
-    const [intensity, setIntensity] = useState("MEDIUM"); // Default value matching database constraint
+    const [intensity, setIntensity] = useState("MEDIUM");
     const [duration, setDuration] = useState(30);
     const [rating, setRating] = useState(3);
     const [isEditing, setIsEditing] = useState(!!weekNumber);
 
-    // Define the intensity options that match the database constraints
     const intensityOptions = [
         { value: "LOW", label: "yengil" },
         { value: "MEDIUM", label: "o'rta" },
@@ -58,7 +57,6 @@ function WorkoutLogPage() {
         enabled: !!user?.id && !!weekNum,
     });
 
-    // Update form with current log data when editing
     useEffect(() => {
         if (currentLog) {
             setNotes(currentLog.notes || "");
@@ -75,7 +73,7 @@ function WorkoutLogPage() {
                 user_id: user.id,
                 week: weekNum,
                 notes,
-                intensity, // We're now using the correct values that match database constraints
+                intensity,
                 duration,
                 rating,
                 logged_at: new Date().toISOString(),

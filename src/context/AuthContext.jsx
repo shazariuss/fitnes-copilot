@@ -12,14 +12,11 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // This function handles both initial loading and auth state changes
         const setupAuth = async () => {
             try {
-                // Attempt to get the current session
                 const { data } = await supabase.auth.getSession();
 
                 if (data?.session) {
-                    // We have a session, try to get user data
                     try {
                         const { data: userData, error: userError } =
                             await supabase
@@ -48,27 +45,22 @@ export const AuthProvider = ({ children }) => {
                         setUser(null);
                     }
                 } else {
-                    // No session found
                     setUser(null);
                 }
             } catch (err) {
                 console.error("Auth initialization error:", err.message);
                 setUser(null);
             } finally {
-                // Always set loading to false regardless of what happened
                 setLoading(false);
             }
         };
 
-        // Run the setup immediately
         setupAuth();
 
-        // Set up the auth state change listener
         const {
             data: { subscription },
         } = supabase.auth.onAuthStateChange((event, session) => {
             if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") {
-                // We'll re-run the setup when these events occur
                 setupAuth();
             } else if (event === "SIGNED_OUT") {
                 setUser(null);
@@ -76,13 +68,10 @@ export const AuthProvider = ({ children }) => {
             }
         });
 
-        // Clean up the subscription
         return () => subscription?.unsubscribe();
     }, []);
 
-    // Registration function
     const register = async (email, password, userData) => {
-        // First create the auth user
         const { data, error: authError } = await supabase.auth.signUp({
             email,
             password,
@@ -90,13 +79,11 @@ export const AuthProvider = ({ children }) => {
 
         if (authError) throw authError;
 
-        // Calculate BMI and assign category
         const heightInMeters = userData.height / 100;
         const bmi = userData.weight / (heightInMeters * heightInMeters);
 
         let category = userData.goal.toLowerCase().replace(" ", "_");
 
-        // Override category based on BMI if needed
         if (bmi > 25 && category !== "lose_weight") {
             category = "lose_weight";
         } else if (bmi < 18.5 && category !== "gain_weight") {
@@ -105,7 +92,6 @@ export const AuthProvider = ({ children }) => {
             category = "stay_fit";
         }
 
-        // Insert user data into our custom users table
         const { error: profileError } = await supabase.from("users").insert({
             id: data.user.id,
             name: userData.name,
@@ -119,7 +105,6 @@ export const AuthProvider = ({ children }) => {
         });
 
         if (profileError) {
-            // If profile creation fails, we should clean up the auth user
             await supabase.auth.signOut();
             throw profileError;
         }
@@ -182,7 +167,6 @@ export const AuthProvider = ({ children }) => {
             if (updates.goal) {
                 category = updates.goal.toLowerCase().replace(" ", "_");
 
-                // Override category based on BMI if needed
                 if (bmi > 25 && category !== "lose_weight") {
                     category = "lose_weight";
                 } else if (bmi < 18.5 && category !== "gain_weight") {

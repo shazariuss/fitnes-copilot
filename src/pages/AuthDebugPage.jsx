@@ -13,7 +13,6 @@ function AuthDebugPage() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Get all localStorage items related to Supabase
         const items = {};
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
@@ -38,7 +37,6 @@ function AuthDebugPage() {
 
     const handleTestDatabase = async () => {
         try {
-            // Simple test query to verify database connection
             const { data, error } = await supabase
                 .from("users")
                 .select("count()")

@@ -1,6 +1,5 @@
 import { supabase } from "./supabase";
 
-// Get current session and user data with proper error handling
 export async function getCurrentSession() {
     try {
         const { data, error } = await supabase.auth.getSession();

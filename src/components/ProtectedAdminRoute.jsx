@@ -13,7 +13,6 @@ function ProtectedAdminRoute({ children }) {
     }
 
     if (!user || user.role !== "admin") {
-        // Redirect to the dashboard if the user is not an admin
         return <Navigate to="/dashboard" replace />;
     }
 
